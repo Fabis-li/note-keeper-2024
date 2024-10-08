@@ -1,4 +1,4 @@
-export interface ListagemCategorias {
-
-
+export interface ListagemCategoria {
+  id: number;
+  titulo: string;
 }

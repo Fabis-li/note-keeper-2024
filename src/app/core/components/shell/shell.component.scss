@@ -7,13 +7,18 @@
 
   border-radius: 0;
 
-  background-color: #eae2b7;
+  background-color: #f1faee;
+  // background-color: #eae2b7;
+  border: none; //retirando a borda do sidenav
 }
 
 .sidenav .mat-toolbar {
   background: inherit;
 
-  background-color: #fdca40;
+  background-color: #e63947d0;
+  // background-color: #fdca40;
+
+  color: #ffffff;
 }
 
 .mat-toolbar.mat-primary {
@@ -21,7 +26,9 @@
   top: 0;
   z-index: 1;
 
-  background-color: #fdca40;
+  background-color: #e63947d0;
+  // background-color: #fdca40;
 
-  color: #080708;
+  color: #ffffff;
+  // color: #080708;
 }
