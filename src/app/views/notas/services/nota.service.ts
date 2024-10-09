@@ -25,10 +25,14 @@ export class NotaService {
   }
 
   selecionarTodos():Observable<ListagemNota[]> {
-    return this.http.get<ListagemNota[]>(this.url);
+    const urlCompleto = `${this.url}?_expand=categoria`;
+
+    return this.http.get<ListagemNota[]>(urlCompleto);
   }
 
   selecionarPorId(id: number):Observable<DetalhesNota> {
-    return this.http.get<DetalhesNota>(`${this.url}/${id}`);
+    const urlCompleto = `${this.url}/${id}?_expand=categoria`;
+
+    return this.http.get<DetalhesNota>(urlCompleto);
   }
 }
