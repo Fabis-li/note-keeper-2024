@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -17,7 +17,7 @@ import { CategoriaService } from '../services/categoria.service';
     MatFormFieldModule,
     MatInputModule ,
     MatIconModule,
-    MatButton
+    MatButtonModule
   ],
   templateUrl: './cadastro-categoria.component.html',
   styleUrl: './cadastro-categoria.component.scss'

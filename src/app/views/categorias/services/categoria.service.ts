@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
 })
 export class CategoriaService {
 
-
   private readonly url = `${environment.API_URL}/categorias`;
 
   constructor(private http: HttpClient) { }

@@ -7,7 +7,7 @@
   >
     <a
       mat-flat-button
-      class="col-md-6 col-lg-4 col-xxl-2 fs-6 py-4"
+      class="botao-icone col-md-6 col-lg-4 col-xxl-2 fs-6 py-4"
       [routerLink]="['/categorias', 'cadastrar']"
     >
       <mat-icon>bookmark_add</mat-icon>
@@ -26,8 +26,7 @@
 
         <mat-card-footer class="d-flex justify-content-end gap-1 p-3 mt-auto">
           <a
-            mat-icon-button
-            class="botao-editar"
+            mat-icon-button class="botao-editar"
             matTooltip="Editar {{item.titulo}}"
             [routerLink]="['/categorias','editar', item.id]"
           >

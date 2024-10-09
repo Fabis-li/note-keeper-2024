@@ -11,5 +11,5 @@ import { ShellComponent } from "./core/components/shell/shell.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'note-keeper-2024';
+
 }
