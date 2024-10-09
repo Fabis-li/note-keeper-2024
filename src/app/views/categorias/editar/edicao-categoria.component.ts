@@ -50,7 +50,7 @@ export class EdicaoCategoriaComponent implements OnInit {
 
   editar() {
     if(!this.id) {
-      console.error('não foi possível recuperar o id requisitado.');
+      console.error('Não foi possível recuperar o id requisitado.');
 
       return;
     }

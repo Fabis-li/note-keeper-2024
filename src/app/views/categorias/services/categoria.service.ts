@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
-import { CadastroCategoria, CategoriaCriada, CategoriaEditada, DetalhesCategoria, EdicaoCategoria, ListagemCategoria } from '../models/categorias.model';
+import { CadastroCategoria, CategoriaCriada, CategoriaEditada, CategoriaExcluida, DetalhesCategoria, EdicaoCategoria, ListagemCategoria } from '../models/categorias.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriaService {
-
 
   private readonly url = `${environment.API_URL}/categorias`;
 
@@ -22,11 +21,15 @@ export class CategoriaService {
     return this.http.put<CategoriaEditada>(`${this.url}/${id}`, categoriaEditada);
   }
 
-  selecionarTodos() {
+  excluir(id: number):Observable<CategoriaExcluida> {
+    return this.http.delete<CategoriaExcluida>(`${this.url}/${id}`);
+  }
+
+  selecionarTodos():Observable<ListagemCategoria[]> {
     return this.http.get<ListagemCategoria[]>(this.url);
   }
 
-  selecionarPorId(id: number) {
+  selecionarPorId(id: number):Observable<DetalhesCategoria> {
     return this.http.get<DetalhesCategoria>(`${this.url}/${id}`);
   }
 }
