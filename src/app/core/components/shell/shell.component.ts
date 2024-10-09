@@ -8,7 +8,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { DashboardComponent } from "../../../views/dashboard/dashboard.component";
 
 @Component({
@@ -24,6 +24,7 @@ import { DashboardComponent } from "../../../views/dashboard/dashboard.component
     MatIconModule,
     AsyncPipe,
     NgIf,
+    RouterLink,
     RouterOutlet,
     DashboardComponent
 ]
