@@ -25,9 +25,9 @@ import { CategoriaService } from '../services/categoria.service';
 export class CadastroCategoriaComponent {
   categoriaForm: FormGroup;
 
-  constructor(private route: Router ,private categoriaService: CategoriaService) {
+  constructor(private router: Router ,private categoriaService: CategoriaService) {
     this.categoriaForm = new FormGroup({
-      titulo: new FormControl('')
+      titulo: new FormControl<string>('')
     });
   }
 
@@ -39,7 +39,7 @@ export class CadastroCategoriaComponent {
         `O registro iD [${res.id}] foi cadastrado com sucesso!`
       );
 
-      this.route.navigate(['/categorias']);
+      this.router.navigate(['/categorias']);
     })
   }
 }
