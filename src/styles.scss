@@ -13,5 +13,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .botao-voltar{
   border-color: #e63946 !important;
-  color:#e63946 !important
+  color:#e63946 !important;
+
+  &:hover{
+    background-color: #e6394717 !important;
+    color: #e63946 !important;
+  }
+
 }
