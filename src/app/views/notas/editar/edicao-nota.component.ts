@@ -55,6 +55,15 @@ export class EdicaoNotaComponent implements OnInit {
       categoriaId: new FormControl<number>(0),
     });
   }
+
+  get titulo(){
+    return this.notaForm.get('titulo');
+  }
+
+  get conteudo(){
+    return this.notaForm.get('conteudo');
+  }
+
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
 
@@ -72,6 +81,8 @@ export class EdicaoNotaComponent implements OnInit {
   }
 
   editar(){
+    if(this.notaForm.invalid) return;
+
     if(!this.id) {
       this.notificacao.erro('Não foi possível recuperar o id requisitado.');
 

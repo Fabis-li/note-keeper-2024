@@ -8,6 +8,9 @@
         <mat-label>Título</mat-label>
         <input formControlName="titulo" matInput placeholder="Ex: Lazer" />
         <mat-icon matSuffix>title</mat-icon>
+        <mat-error *ngIf="titulo?.invalid && titulo?.errors!['required']"
+        >O título é obrigatório!</mat-error
+        >
       </mat-form-field>
 
       <mat-form-field class="w-100" appearance="fill">
@@ -16,6 +19,9 @@
 
         </textarea>
         <mat-icon matSuffix>subtitles</mat-icon>
+        <mat-error *ngIf="conteudo?.invalid && conteudo?.errors!['required']"
+        >O conteúdo é obrigatório!</mat-error
+      >
       </mat-form-field>
 
       <mat-form-field  class="w-100" appearance="fill">

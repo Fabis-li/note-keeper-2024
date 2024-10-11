@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -48,16 +48,27 @@ export class CadastroNotasComponent implements OnInit {
     private notificacao: NotificacaoService
   ) {
     this.notaForm = new FormGroup({
-      titulo: new FormControl<string>(''),
-      conteudo: new FormControl<string>(''),
+      titulo: new FormControl<string>('', [Validators.required, Validators.minLength(3)]),
+      conteudo: new FormControl<string>('',Validators.required),
       categoriaId: new FormControl<number>(0),
     });
   }
+
+  get titulo(){
+    return this.notaForm.get('titulo');
+  }
+
+  get conteudo(){
+    return this.notaForm.get('conteudo');
+  }
+
   ngOnInit(): void {
     this.categorias$ = this.categoriaService.selecionarTodos();
   }
 
   cadastrar(){
+    if(this.notaForm.invalid) return;
+
     const novaNota: CadastroNota = this.notaForm.value;
 
     this.notaService.cadastrar(novaNota).subscribe((res) => {
@@ -67,7 +78,6 @@ export class CadastroNotasComponent implements OnInit {
 
       this.router.navigate(['/notas']);
     })
-
   }
 
     campoNaoFoiTocado(campo: string): boolean {
