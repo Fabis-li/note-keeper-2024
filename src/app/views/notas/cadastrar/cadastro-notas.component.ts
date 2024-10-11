@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 import { CategoriaService } from '../../categorias/services/categoria.service';
 import { MatCardModule } from '@angular/material/card';
 import { NotaService } from '../services/nota.service';
+import { NotificacaoService } from '../../../core/components/shell/notificacao/notificacao.service';
 
 @Component({
   selector: 'app-cadastro-notas',
@@ -43,7 +44,8 @@ export class CadastroNotasComponent implements OnInit {
   constructor(
     private router: Router,
     private notaService: NotaService,
-    private categoriaService: CategoriaService
+    private categoriaService: CategoriaService,
+    private notificacao: NotificacaoService
   ) {
     this.notaForm = new FormGroup({
       titulo: new FormControl<string>(''),
@@ -59,7 +61,7 @@ export class CadastroNotasComponent implements OnInit {
     const novaNota: CadastroNota = this.notaForm.value;
 
     this.notaService.cadastrar(novaNota).subscribe((res) => {
-      console.log(
+      this.notificacao.sucesso(
         `O registro iD [${res.id}] foi cadastrado com sucesso!`
       );
 

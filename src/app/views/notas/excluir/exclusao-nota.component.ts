@@ -8,6 +8,7 @@ import { DetalhesCategoria } from '../../categorias/models/categorias.model';
 import { CategoriaService } from '../../categorias/services/categoria.service';
 import { NotaService } from '../services/nota.service';
 import { DetalhesNota } from '../models/nota.models';
+import { NotificacaoService } from '../../../core/components/shell/notificacao/notificacao.service';
 
 @Component({
   selector: 'app-exclusao-nota',
@@ -31,13 +32,14 @@ export class ExclusaoNotaComponent implements  OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private notaService: NotaService,
+    private notificacao: NotificacaoService
   ) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
 
     if(!this.id) {
-      console.error('Não foi possível recuperar o id requisitado.');
+      this.notificacao.erro('Não foi possível recuperar o id requisitado.');
 
       return;
     }
@@ -47,13 +49,13 @@ export class ExclusaoNotaComponent implements  OnInit {
 
   excluir() {
     if(!this.id) {
-      console.error('Não foi possível recuperar o id requisitado.');
+      this.notificacao.erro('Não foi possível recuperar o id requisitado.');
 
       return;
     }
 
     this.notaService.excluir(this.id).subscribe((res) => {
-      console.log(`O registro id [${this.id}] foi excluído com sucesso!`);
+      this.notificacao.sucesso(`O registro id [${this.id}] foi excluído com sucesso!`);
 
       this.router.navigate(['/notas']);
     });

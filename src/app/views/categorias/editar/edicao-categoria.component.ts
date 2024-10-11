@@ -8,6 +8,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CadastroCategoria, DetalhesCategoria, EdicaoCategoria } from '../models/categorias.model';
 import { CategoriaService } from '../services/categoria.service';
 import { NgIf } from '@angular/common';
+import { NotificacaoService } from '../../../core/components/shell/notificacao/notificacao.service';
 
 @Component({
   selector: 'app-edicao-categoria',
@@ -31,7 +32,8 @@ export class EdicaoCategoriaComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router ,
-    private categoriaService: CategoriaService
+    private categoriaService: CategoriaService,
+    private notificacao: NotificacaoService
 
   ) {
     this.categoriaForm = new FormGroup({
@@ -47,7 +49,7 @@ export class EdicaoCategoriaComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
 
     if(!this.id) {
-      console.error('não foi possível recuperar o id requisitado.');
+      this.notificacao.erro('Não foi possível recuperar o id requisitado.');
 
       return;
     }
@@ -59,7 +61,7 @@ export class EdicaoCategoriaComponent implements OnInit {
     if(this.categoriaForm.invalid) return;
 
     if(!this.id) {
-      console.error('Não foi possível recuperar o id requisitado.');
+      this.notificacao.erro('Não foi possível recuperar o id requisitado.');
 
       return;
     }
@@ -67,7 +69,7 @@ export class EdicaoCategoriaComponent implements OnInit {
     const categoriaEditada: EdicaoCategoria = this.categoriaForm.value;
 
     this.categoriaService.editar(this.id, categoriaEditada).subscribe((res) => {
-      console.log(
+      this.notificacao.sucesso(
         `O registro iD [${res.id}] foi editado com sucesso!`
       );
 

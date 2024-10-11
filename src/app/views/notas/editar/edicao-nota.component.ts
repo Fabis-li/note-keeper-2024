@@ -13,6 +13,7 @@ import { ListagemCategoria } from '../../categorias/models/categorias.model';
 import { CategoriaService } from '../../categorias/services/categoria.service';
 import { CadastroNota, DetalhesNota } from '../models/nota.models';
 import { NotaService } from '../services/nota.service';
+import { NotificacaoService } from '../../../core/components/shell/notificacao/notificacao.service';
 
 @Component({
   selector: 'app-edicao-nota',
@@ -45,7 +46,8 @@ export class EdicaoNotaComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private notaService: NotaService,
-    private categoriaService: CategoriaService
+    private categoriaService: CategoriaService,
+    private notificacao: NotificacaoService
   ) {
     this.notaForm = new FormGroup({
       titulo: new FormControl<string>(''),
@@ -57,7 +59,7 @@ export class EdicaoNotaComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
 
     if(!this.id) {
-      console.error('Não foi possível recuperar o id requisitado.');
+      this.notificacao.erro('Não foi possível recuperar o id requisitado.');
 
       return;
     }
@@ -71,14 +73,14 @@ export class EdicaoNotaComponent implements OnInit {
 
   editar(){
     if(!this.id) {
-      console.error('Não foi possível recuperar o id requisitado.');
+      this.notificacao.erro('Não foi possível recuperar o id requisitado.');
 
       return;
     }
     const notaEditada: CadastroNota = this.notaForm.value;
 
     this.notaService.editar(this.id, notaEditada).subscribe((res) => {
-      console.log(
+      this.notificacao.sucesso(
         `O registro iD [${res.id}] foi editado com sucesso!`
       );
 
