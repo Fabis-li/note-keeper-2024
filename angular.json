@@ -131,6 +131,13 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref":"https://fabis-li.github.io/note-keeper-2024/",
+            "repo":"https://github.com/Fabis-li/note-keeper-2024.git"
+          }
         }
       }
     }
