@@ -56,7 +56,7 @@ export class ListagemNotasComponent implements OnInit {
     this.notas$ = of(notasFiltradas);
   }
 
-  private obterNotasFiltradas(notas: ListagemNota[], categoriaId?: number) {
+  private obterNotasFiltradas(notas: ListagemNota[], categoriaId?: number){
     if(categoriaId) {
       return notas.filter((nota) => nota.categoriaId === categoriaId);
     }

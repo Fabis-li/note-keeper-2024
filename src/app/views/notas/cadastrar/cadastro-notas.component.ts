@@ -88,4 +88,10 @@ export class CadastroNotasComponent implements OnInit {
       return controle.pristine
     }
 
+    mapearTituloDaCategoria(id: number, categorias: ListagemCategoria[]): string {
+      const categoria = categorias.find((categoria) => categoria.id === id);
+
+      return categoria ? categoria.titulo : 'Categoria não encontrada';
+    }
+
 }
